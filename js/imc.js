@@ -33,9 +33,25 @@ for (var i = 0; i < pacientes.length ; i++) {
         paciente.classList.add("dados-invalidos");
     }
     if (pesoValido && alturaValida) {
-        var imc = peso / (altura * altura);
-        tdIMC.textContent = imc.toFixed(2);
+        var imc = calculaImc(peso, altura);
+        tdIMC.textContent = imc;
     } else {
         tdIMC.textContent = "Altura e/ou peso inválidos!";
     }
+}
+
+
+titulo.addEventListener("click", function() {
+    console.log("Você clicou em uma função anônima!");
+});
+titulo.addEventListener("click", exemplo);  //forma correta de passar a função. Caso coloque exemplo() vai ser chamado o retorno da função.
+function exemplo () {
+    console.log("Você clicou em uma função!");
+};
+
+
+function calculaImc(peso, altura) {
+    var imc = 0;
+    imc = peso / (altura * altura);
+    return imc.toFixed(2);
 }
